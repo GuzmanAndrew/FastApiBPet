@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from routes.user import user
-from config.openapi import tags_metadata
+from logic.v1.routes.user import user as user
+from logic.v1.config.openapi import tags_metadata as tags_metadata
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
