@@ -39,7 +39,7 @@ def get_user(id: str):
     return conn.execute(users.select().where(users.c.id == id)).first()
 
 
-@user.post("/", tags=["users"], response_model=User, description="Create a new user")
+@user.post("/new", tags=["users"], response_model=User, description="Create a new user")
 def create_user(user: User):
     new_user = {"name": user.name, "email": user.email}
     new_user["password"] = user.password
@@ -47,7 +47,7 @@ def create_user(user: User):
     return conn.execute(users.select().where(users.c.id == result.lastrowid)).first()
 
 
-@user.put(
+'''@user.put(
     "users/{id}", tags=["users"], response_model=User, description="Update a User by Id"
 )
 def update_user(user: User, id: int):
@@ -56,7 +56,7 @@ def update_user(user: User, id: int):
         .values(name=user.name, email=user.email, password=user.password)
         .where(users.c.id == id)
     )
-    return conn.execute(users.select().where(users.c.id == id)).first()
+    return conn.execute(users.select().where(users.c.id == id)).first()'''
 
 
 @user.delete("/{id}", tags=["users"], status_code=HTTP_204_NO_CONTENT)
