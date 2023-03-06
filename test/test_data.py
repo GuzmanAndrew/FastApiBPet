@@ -13,7 +13,7 @@ def test_create():
    }
 
    response = client.post(
-      '/',
+      '/new',
       json=todo
    )
 
